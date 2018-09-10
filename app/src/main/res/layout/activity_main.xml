@@ -13,18 +13,6 @@
         android:id="@+id/salary_input"
         android:layout_alignParentTop="true"/>
 
-    <TextView
-        android:id="@+id/salary_counter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
-
-    <TextView
-        android:id="@+id/incrementer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/salary_counter"/>
-
     <Button
         android:id="@+id/salary_enter"
         android:layout_width="match_parent"
