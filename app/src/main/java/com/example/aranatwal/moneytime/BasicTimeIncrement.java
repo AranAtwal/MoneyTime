@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class BasicTimeIncrement extends AppCompatActivity {
 
     TextView salaryCounter;
@@ -13,10 +15,11 @@ public class BasicTimeIncrement extends AppCompatActivity {
     Thread thread;
     double salary;
     double secondsInYear;
-    double penniesInYear;
-    double penniesPerSecond;
-    double secondsPerPenny;
-    int counter = 0;
+//    double penniesInYear;
+    double poundsPerSecond;
+    double secondsPerPound;
+    double counter = 0;
+    String amountEarned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,8 @@ public class BasicTimeIncrement extends AppCompatActivity {
         incrementer = (TextView) findViewById(R.id.incrementer);
 
         secondsInYear = 365*24*60*60;
-        penniesInYear = salary*100;
-        penniesPerSecond = penniesInYear/secondsInYear;
-        secondsPerPenny = 1/penniesPerSecond;
+        poundsPerSecond = salary/secondsInYear;
+        secondsPerPound = 1/ poundsPerSecond;
 
 //        incrementer.setText(String.valueOf(counter));
 
@@ -43,13 +45,13 @@ public class BasicTimeIncrement extends AppCompatActivity {
             public void run() {
                 try {
                     while (!thread.isInterrupted()) {
-                        Log.d("seconds", String.valueOf(secondsPerPenny*1000));
-                        Thread.sleep((long) (secondsPerPenny*1000));
+                        Log.d("seconds", String.valueOf(secondsPerPound *1000));
+                        Thread.sleep((long) (1000));
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // update TextView here!
-                                incrementer.setText(String.valueOf(counter++));
+                                DecimalFormat df = new DecimalFormat("#.#####");
+                                incrementer.setText(df.format(counter=counter+poundsPerSecond));
 
                             }
                         });
