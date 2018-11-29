@@ -52,7 +52,6 @@ public class BasicTimeIncrement extends AppCompatActivity {
                             public void run() {
                                 DecimalFormat df = new DecimalFormat("#.#####");
                                 incrementer.setText(df.format(counter=counter+poundsPerSecond));
-
                             }
                         });
                     }
